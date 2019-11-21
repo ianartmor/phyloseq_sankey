@@ -32,10 +32,10 @@ For now, this function only works with one kingdom at a time. Please feel free t
 GP_bacteria <-   subset_taxa(GlobalPatterns, Kingdom == "Bacteria")
 GP_archaea <-  subset_taxa(GlobalPatterns, Kingdom == "Archaea")
 ```
-## Plot Sankey (default)
-It's as easy as that! This plot is interactive, so click around to explore the dataset. 
+## Plot Sankey diagram (default)
+It's as easy as that! This diagram is interactive, so click around to explore the dataset. 
 
-Note: increasing the number of taxa risks overplotting and the function slows down considerably. Interactive Sankey plots are better than stacked bar plots, but they still aren't perfect!
+Note: increasing the number of taxa risks overplotting and the function slows down considerably. Interactive Sankey diagrams are better than stacked bar plots, but they still aren't perfect!
 ```{r message = FALSE}
 plot_hierarchy(physeq = GP_bacteria, number_of_taxa_to_plot = 50)
 plot_hierarchy(physeq = GP_archaea, number_of_taxa_to_plot = 50)
