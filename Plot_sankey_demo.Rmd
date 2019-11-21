@@ -1,0 +1,50 @@
+---
+title: "Plot_hierarchy demo"
+author: "Ian Arthur Morelan"
+date: "11/21/2019"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+## Quick note
+This function only works if your tax table has the following headers: Kingdom, Phylum, Class, Order, Family, Genus.
+
+## Load Packages & Functions
+First, if you haven't installed the package, install the hiervis package and load phyloseq. I use the GlobalPatterns dataset for the demo.
+```{r setup}
+
+#install.packages(devtools)
+#devtools::install_github(fbreitwieser/hiervis)
+
+library(phyloseq)
+
+data("GlobalPatterns")
+
+source("plot_hierarchy.R")
+
+
+
+```
+
+## Subset to your kingdom of choice
+For now, this function only works with one kingdom at a time. Please feel free to improve!
+```{r subset}
+GP_bacteria <-   subset_taxa(GlobalPatterns, Kingdom == "Bacteria")
+GP_archaea <-  subset_taxa(GlobalPatterns, Kingdom == "Archaea")
+```
+## Plot Sankey (default)
+It's as easy as that! This plot is interactive, so click around to explore the dataset. 
+
+Note: increasing the number of taxa risks overplotting and the function slows down considerably. Interactive Sankey plots are better than stacked bar plots, but they still aren't perfect!
+```{r message = FALSE}
+plot_hierarchy(physeq = GP_bacteria, number_of_taxa_to_plot = 50)
+plot_hierarchy(physeq = GP_archaea, number_of_taxa_to_plot = 50)
+```
+
+## Plot sunburst
+These are essentially Krona plots.
+```{r sunburst}
+plot_hierarchy(physeq = GP_bacteria, number_of_taxa_to_plot = 50, plot_type = "sunburst")
+plot_hierarchy(physeq = GP_archaea, number_of_taxa_to_plot = 50, plot_type = "sunburst")
+```
+
