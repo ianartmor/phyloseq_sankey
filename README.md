@@ -1,8 +1,4 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
+
 # phyloseq_sankey
 A function that makes it super-duper easy to make interactive Sankey plots from phyloseq objects. Based on the hiervis package which is based on d3-hierarchy and d3-hiervis.
 
